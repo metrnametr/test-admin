@@ -3,7 +3,7 @@ import data from './mock.json'
 
 export const authProvider: AuthProvider  = {
     login: ({ username, password }) => {
-        const user = data.user.find(item => item.username === username && item.password === password)
+        const user = data.users.find(item => item.username === username && item.password === password)
         localStorage.setItem('token', JSON.stringify(user))
         return Promise.resolve();
     },

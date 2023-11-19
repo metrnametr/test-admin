@@ -16,7 +16,7 @@ export const UserEdit = () => {
     }
 
     return(
-        <Edit resource={'user'}>
+        <Edit resource={'users'}>
             <SimpleForm onSubmit={saveFunc}>
                 <TextInput source="id" InputProps={{ disabled: true }}/>
                 <TextInput source="name"/>

@@ -20,18 +20,18 @@ export const dataProvider: DataProvider = {
 
         const start = (page - 1) * perPage;
         const end = page * perPage;
-        const filteredData = data['user'].slice(start, end);
+        const filteredData = data[resource].slice(start, end);
 
         const sortedData = orderBy(filteredData, [field], [order === 'ASC' ? 'asc' : 'desc']);
 
         return Promise.resolve({
             data: sortedData,
-            total: data['user'].length,
+            total: data[resource].length,
         });
     },
     getOne: (resource, params) => {
         return Promise.resolve({
-            data: data['user'][+params.id-1],
+            data: data[resource][+params.id-1],
         })
     },
     update: (resource, params) => {
