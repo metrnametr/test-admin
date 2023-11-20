@@ -3,22 +3,24 @@ import {YMaps, Map, Placemark} from "@pbe/react-yandex-maps";
 import {Theme, Typography, useMediaQuery} from "@mui/material";
 import {useRecordContext} from "react-admin";
 
+import { useFormContext } from 'react-hook-form';
 interface Icord {
-    source: string | number[];
+    source: string;
     setLocationState?: any;
 }
 
 export const MapView:FC<Icord> = (props) => {
 
     const record = useRecordContext();
-
+    
     const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("xl"));
-
+    const { setValue } = useFormContext();
     const [coords, setCoords] = useState(record !== undefined ? record.address : props.source);
 
     const onMapClick = (e: any) => {
-        setCoords(e.get('coords'));
-        props.setLocationState(coords)
+        const currentCoords = e.get('coords');
+        setCoords(currentCoords);
+        setValue(props.source, currentCoords, { shouldDirty: true });
     }
 
     return (
