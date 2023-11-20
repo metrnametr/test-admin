@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
 import {YMaps, Map, Placemark} from "@pbe/react-yandex-maps";
 import {Theme, Typography, useMediaQuery} from "@mui/material";
-import {useRecordContext} from "react-admin";
+import {useRecordContext } from "react-admin";
 
 interface Icord {
     source: string | number[];
@@ -21,8 +21,9 @@ export const MapView:FC<Icord> = (props) => {
         props.setLocationState(coords)
     }
 
+
+
     return (
-        <div>
             <YMaps>
                 <Typography
                     variant="h5"
@@ -34,6 +35,7 @@ export const MapView:FC<Icord> = (props) => {
                 >
                     {"Address"}
                 </Typography>
+                {coords}
                 <Map
                     onClick={onMapClick}
                     width={`${!isSmall ? '55vw' : '90%'}`}
@@ -43,6 +45,5 @@ export const MapView:FC<Icord> = (props) => {
                     {coords && <Placemark geometry={coords} />}
                 </Map>
             </YMaps>
-        </div>
     )
 };

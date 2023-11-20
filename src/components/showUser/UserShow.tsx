@@ -1,11 +1,5 @@
 import {EmailField, ImageField, Show, SimpleShowLayout, TextField} from 'react-admin';
-import { Card, CardMedia } from '@mui/material';
 import {MapView} from "../map/MapView";
-
-const customStyles = {
-    height: 320,
-    width: 320,
-};
 
 export const UserShow = () => {
 
